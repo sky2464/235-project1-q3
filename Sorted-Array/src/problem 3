@@ -1,12 +1,11 @@
-//
-//  main.cpp
-//  assignment1.cpp
-//
-//  Created by Muhammad Usman on 2/17/18.
-//  Copyright © 2018 Muhammad Usman. All rights reserved.
-//
+/******************************************************************************
 
-    
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <iostream>
     
 using namespace std;
@@ -54,20 +53,23 @@ using namespace std;
             }
         }
     }
-    void printArray(int arr[],int searchnum int start, int end)
+    void printArray(int arr[],int searchnum, int start, int end)
 {
-    if(arr[start] == searchnum || arr[start] < searchnum)
+    if(arr[start]<= searchnum && arr[start] > end)
     {
         cout<< arr[start];
-        printarray(arr,searchnum,start-1,end)
+        printArray(arr,searchnum,start-1,end);
     }
     else if(arr[start] > searchnum)
     {
         int newstart = start-1;
         cout<< arr[newstart];
-        printArray(arr, searchnum, newstart-1, end)
+        printArray(arr, searchnum, newstart-1, end);
     }
-        
+      else
+      {
+        cout<<"the num is not in the list."<<endl;
+      }
     
 }
 
@@ -94,10 +96,24 @@ int main()
         sort(arr, size); //Sorts the array in order, using an Insertion Sort.
         cout << "Enter a number to search for: " << endl;
         cin >> x;
-        int output = search(arr, size, x);
+        int output = 0;
+        output = search(arr, size, x);
         cout<<"The number " << x <<" was found in index "<<output<<"."<<endl;
-        int end = ouput - 5;
-        printArray(int arr[], int x,int ouput, int end)
+        int end = output - 5;
+        printArray(arr,x,output,end);
+       
+        /*cout<<"The numbers lower than " <<x <<" in the array are :"<< endl;
+        if(output== 0)
+            cout<<"Unable to find lower values since this is the lowest value in array"<<endl;
+        else
+        for(int i = output-1; i >=output-5 && i >=0; i--) // to print numbers lower the search number, only if the search number is present in the array.
+            
+                {
+                cout<<"{"<<arr[i]<< "}"<<endl;
+                }*/
         
         return 0;
 }
+
+
+
