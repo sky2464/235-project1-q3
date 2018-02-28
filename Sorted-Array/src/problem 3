@@ -2,9 +2,8 @@
 //  main.cpp
 //  question3
 //
-//  Created by Muhammad Usman & Navid on 2/27/18.
-//  Copyright © 2018 Muhammad Usman. All rights reserved.
-//
+//  Created by Navid &Muhammad Usman on 2/27/18.
+
 
 #include <iostream>
 
@@ -55,14 +54,21 @@ void sort(int arr[], int size) //Insertion Sort
 }
 void printArray(int arr[],int searchnum, int start, int end)
 {
-    if(arr[start]<= searchnum && arr[start] > end)
+    if(arr[start]<= searchnum && arr[start] > 0)
     {
-        cout<< arr[start]<<endl;
+        if(start < 0)
+        {
+            return;
+        }        cout<< arr[start]<<endl;
         printArray(arr,searchnum,start-1,end);
     }
-    else if(arr[start] > searchnum)
+   else if(arr[start] > searchnum)
     {
         int newstart = start-1;
+        if(newstart < 0)
+        {
+            return;
+        }
         cout<< arr[newstart]<<endl;
         printArray(arr, searchnum, newstart-1, end);
     }
