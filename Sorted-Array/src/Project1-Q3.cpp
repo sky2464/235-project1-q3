@@ -1,6 +1,6 @@
 //============================================================================
 // Name        : Project1-Q3.cpp
-// Author      : Navid Saboori., Usman
+// Author      : Navid Saboori., Muhammad Usman
 // Version     : 3.0
 // Professor   : Elaheh Vahdani
 // Copyright   : CSCI 235, SPRING 2018
