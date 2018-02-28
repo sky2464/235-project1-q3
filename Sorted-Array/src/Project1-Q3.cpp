@@ -13,7 +13,7 @@ using namespace std;
 // The search function takes the array and uses the divide and separate method to search for the number user is looking for. it takes the middle number of array and compares whether that number is smaller or greater than what he user is looking for and updates the low and high variable accordingly.
 int search(int arr[], int size, int x)
 {
-    int high = size-1;
+    int high = size;
     int low = 0;
     int mid=0;
     while (low <= high)
@@ -32,7 +32,7 @@ int search(int arr[], int size, int x)
             
             high = mid-1 ;
     }
-    return high +1;
+    return mid;
     
     
 }
@@ -55,11 +55,12 @@ void sort(int arr[], int size) //Insertion Sort
     }
 }
 //This printArray function uses the parameter to determine whether the searchnumber is smaller, bigger or equal to the number that was returned by the Search function and it uses recursion to print 5 numbers that are smaller than the search number. For example if there are only 3 numbers in the array that are smaller than the searchnumber then it will print those 3 numbers only.
+
 void printArray(int arr[],int searchnum, int start, int end)
 {
-    if(start == end || start <=0)
+    if(start == end )
     {
-       cout<<arr[start]<<endl;
+        return;
     }
     else if(arr[start] == searchnum)
     {
@@ -118,10 +119,17 @@ int main()
     cin >> x;
     int output = 0;
     output = search(arr, size, x);
-    cout<<"The elements that are smaller than number"<< x <<" in the set are :"<<endl;
+   // cout<<"the return index is "<< output << " and the value is "<<arr[output]<<"."<<endl;
+    if(output == 0)
+    {
+        cout<<"There are no numbers in the set that are smaller than "<< x<<"."<<endl;
+    }
+    else
+    {
+    cout<<"The elements that are smaller than number "<< x <<" in the set are :"<<endl;
     int end = output - 5;
-   
-    printArray(arr,x,output,end);
     
+    printArray(arr,x,output,end);
+    }
     return 0;
 }
