@@ -64,7 +64,7 @@ int search(int arr[], int size, int x) {
 
 			high = mid - 1;
 	}
-	return mid;
+	return high+1;
 
 }
 // Sort Function implementation
@@ -82,22 +82,46 @@ void sort(int arr[], int size) //Insertion Sort
 		}
 	}
 }
-// PrintArray Function implementation
-void printArray(int arr[], int searchnum, int start, int end) {
-	if (arr[start] <= searchnum && arr[start] > 0) {
-		if (start < 0) {
-			return;
-		}
-		cout << arr[start] << endl;
-		printArray(arr, searchnum, start - 1, end);
-	} else if (arr[start] > searchnum) {
-		int newstart = start - 1;
-		if (newstart < 0) {
-			return;
-		}
-		cout << arr[newstart] << endl;
-		printArray(arr, searchnum, newstart - 1, end);
-	} else {
-	}
 
+/*This printArray function uses the parameter to determine whether the searchnumber is smaller, bigger or equal to the number 
+that was returned by the Search function and it uses recursion to print 5 numbers that are smaller than the search number. 
+For example if there are only 3 numbers in the array that are smaller than the searchnumber then it will print those 
+3 numbers only.
+*/
+
+// PrintArray Function implementation
+void printArray(int arr[],int searchnum, int start, int end)
+{
+    if(start == end || start ==0)
+        return;
+    else if(arr[start] == searchnum)
+    {
+        start = start-1;
+        cout<< arr[start]<< endl;
+        printArray(arr,searchnum,start-1,end);
+    }
+    else if(arr[start]< searchnum )
+    {
+        if(start < 0)
+        {
+            return;
+        }
+        cout<< arr[start]<<endl;
+        printArray(arr,searchnum,start-1,end);
+    }
+  else if(arr[start] > searchnum)
+    {
+        int newstart = start-1;
+        if(newstart < 0)
+        {
+            return;
+        }
+        cout<< arr[newstart]<<endl;
+        printArray(arr, searchnum, newstart-1, end);
+    }
+    else
+    {
+        
+    }
+    
 }
