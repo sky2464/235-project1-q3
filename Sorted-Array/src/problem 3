@@ -1,119 +1,105 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
+//
+//  main.cpp
+//  question3
+//
+//  Created by Muhammad Usman on 2/27/18.
+//  Copyright © 2018 Muhammad Usman. All rights reserved.
+//
 
 #include <iostream>
-    
+
 using namespace std;
-    
-    int search(int arr[], int size, int x)
+
+int search(int arr[], int size, int x)
+{
+    int high = size-1;
+    int low = 0;
+    int mid=0;
+    while (low <= high)
     {
-        int high = size-1;
-        int low = 0;
-        int mid=0;
-        while (low <= high)
-        {
-            mid = low +(high+low)/2;
-            
-            if(arr[mid] == x)
-            {
-                return mid;
-            }
-             if(arr[mid] < x)
-            {
-                low = mid+1;
-            }
-            else
-            
-                high = mid -1;
-        }
-        return -1;
+        mid = low +(high-low)/2;
         
-
-    }
-
-
-    void sort(int arr[], int size) //Insertion Sort
-    {
-        int temp, j;
-        for (int i = 0; i <= size; i++)
+        if(arr[mid] == x)
         {
-            j = i;
+            return mid;
+        }
+        if(arr[mid] < x)
+        {
+            low = mid+1;
+        }
+        else
             
-            while (j > 0 && arr[j] < arr[j - 1])
-            {
-                temp = arr[j];
-                arr[j] = arr[j - 1];
-                arr[j - 1] = temp;
-                j--;
-            }
+            high = mid-1 ;
+    }
+    return mid;
+    
+    
+}
+
+
+void sort(int arr[], int size) //Insertion Sort
+{
+    int temp, j;
+    for (int i = 0; i <= size; i++)
+    {
+        j = i;
+        
+        while (j > 0 && arr[j] < arr[j - 1])
+        {
+            temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+            j--;
         }
     }
-    void printArray(int arr[],int searchnum, int start, int end)
+}
+void printArray(int arr[],int searchnum, int start, int end)
 {
     if(arr[start]<= searchnum && arr[start] > end)
     {
-        cout<< arr[start];
+        cout<< arr[start]<<endl;
         printArray(arr,searchnum,start-1,end);
     }
     else if(arr[start] > searchnum)
     {
         int newstart = start-1;
-        cout<< arr[newstart];
+        cout<< arr[newstart]<<endl;
         printArray(arr, searchnum, newstart-1, end);
     }
-      else
-      {
-        cout<<"the num is not in the list."<<endl;
-      }
+    else{}
     
 }
 
 int main()
+{
+    int x, value, size;
+    
+    cout << "Enter the number of elements you would like: " << endl;
+    cin >> size;
+    
+    if (size <= 0)
     {
-        int x, value, size;
-        
-        cout << "Enter the size of array: " << endl;
+        cerr << "Enter a value greater than 0." << endl;
         cin >> size;
-        
-        if (size <= 0)
-        {
-            cerr << "Enter a value greater than 0." << endl;
-            cin >> size;
-        }
-        int arr[size];
-        cout << "Begin entering your array values: " << endl;
-        
-        for (int i = 0; i <size; i++)
-        {
-            cin >> value;
-            arr[i] = value;
-        }
-        sort(arr, size); //Sorts the array in order, using an Insertion Sort.
-        cout << "Enter a number to search for: " << endl;
-        cin >> x;
-        int output = 0;
-        output = search(arr, size, x);
-        cout<<"The number " << x <<" was found in index "<<output<<"."<<endl;
-        int end = output - 5;
-        printArray(arr,x,output,end);
-       
-        /*cout<<"The numbers lower than " <<x <<" in the array are :"<< endl;
-        if(output== 0)
-            cout<<"Unable to find lower values since this is the lowest value in array"<<endl;
-        else
-        for(int i = output-1; i >=output-5 && i >=0; i--) // to print numbers lower the search number, only if the search number is present in the array.
-            
-                {
-                cout<<"{"<<arr[i]<< "}"<<endl;
-                }*/
-        
-        return 0;
+    }
+    int arr[size];
+    cout << "Begin entering your array values: " << endl;
+    
+    for (int i = 0; i <size; i++)
+    {
+        cin >> value;
+        arr[i] = value;
+    }
+    sort(arr, size); //Sorts the array in order, using an Insertion Sort.
+    cout << "Enter a number to search for: " << endl;
+    cin >> x;
+    int output = 0;
+    output = search(arr, size, x);
+    cout<<"The number " << x <<" was found in index "<<output<<"."<<endl;
+    int end = output - 5;
+    printArray(arr,x,output,end);
+    
+   
+    
+    return 0;
 }
-
-
-
