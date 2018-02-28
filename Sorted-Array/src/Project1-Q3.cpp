@@ -7,6 +7,7 @@
 // Description : Sorted Array C++, Ansi-style
 //============================================================================
 
+
 #include <iostream>
 
 using namespace std;
@@ -32,7 +33,8 @@ int search(int arr[], int size, int x)
             
             high = mid-1 ;
     }
-    return mid;
+    
+        return mid;
     
     
 }
@@ -60,7 +62,7 @@ void printArray(int arr[],int searchnum, int start, int end)
 {
     if(start == end )
     {
-        return;
+        cout<<arr[end]<<endl;
     }
     else if(arr[start] == searchnum)
     {
@@ -119,20 +121,35 @@ int main()
     cin >> x;
     int output = 0;
     output = search(arr, size, x);
-   // cout<<"the return index is "<< output << " and the value is "<<arr[output]<<"."<<endl;
+   cout<<"the return index is "<< output << " and the value is "<<arr[output]<<"."<<endl;
     if(output == 0)
     {
+        if(arr[output] < x)
+        {
+            output= output+1;
+        }
+        else
+        {
         cout<<"There are no numbers in the set that are smaller than "<< x<<"."<<endl;
+        }
     }
-    else
-    {
+    
     cout<<"The elements that are smaller than number "<< x <<" in the set are :"<<endl;
-    int end = output - 5;
-    if(arr[output] > x)
+    
+    int end;//= output - 5;
+   if(arr[output] > x)
            {
                end = output -6;
            }
+   else
+   {
+       end = output -5;
+   }
+        if(end <=0)
+        {
+            end = 0;
+        }
     printArray(arr,x,output,end);
-    }
+    
     return 0;
 }
