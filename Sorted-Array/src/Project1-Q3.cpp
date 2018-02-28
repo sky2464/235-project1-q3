@@ -128,7 +128,10 @@ int main()
     {
     cout<<"The elements that are smaller than number "<< x <<" in the set are :"<<endl;
     int end = output - 5;
-    
+    if(arr[output] > x)
+           {
+               end = output -6;
+           }
     printArray(arr,x,output,end);
     }
     return 0;
