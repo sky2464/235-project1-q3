@@ -34,7 +34,7 @@ int search(int arr[], int size, int x)
             high = mid-1 ;
     }
     
-        return mid;
+        return low-1;
     
     
 }
@@ -62,7 +62,9 @@ void printArray(int arr[],int searchnum, int start, int end)
 {
     if(start == end )
     {
-        cout<<arr[end]<<endl;
+        
+        return;
+        
     }
     else if(arr[start] == searchnum)
     {
@@ -136,20 +138,40 @@ int main()
     
     cout<<"The elements that are smaller than number "<< x <<" in the set are :"<<endl;
     
-    int end;//= output - 5;
-   if(arr[output] > x)
+    int end= output - 5;
+   if(end < 0)
            {
-               end = output -6;
+               end = 0;
            }
    else
    {
        end = output -5;
    }
-        if(end <=0)
-        {
-            end = 0;
-        }
+    
     printArray(arr,x,output,end);
     
     return 0;
 }
+/*
+Enter the number of elements you would like:
+8
+Begin entering your element values:
+1
+4
+5
+10
+16
+40
+60
+98
+Enter a number to search for:
+31
+the return index is 5 and the value is 16.
+The elements that are smaller than number 31 in the set are :
+16
+10
+5
+4
+1
+Program ended with exit code: 0
+ */
